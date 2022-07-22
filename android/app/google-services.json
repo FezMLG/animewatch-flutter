@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "142916509182",
+    "project_id": "animewatch-679b2",
+    "storage_bucket": "animewatch-679b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142916509182:android:bee6eda6f000f19ae774af",
+        "android_client_info": {
+          "package_name": "com.example.animewatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142916509182-q4n6628j49vopfniujfif0s6mj8k5753.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQL48TBOl09EBDdBbziNFj819a2Umueeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142916509182-q4n6628j49vopfniujfif0s6mj8k5753.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
