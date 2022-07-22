@@ -1,13 +1,10 @@
-import 'package:animewatch/browse/browse.dart';
 import 'package:animewatch/firebase_options.dart';
-import 'package:animewatch/home/home.dart';
 import 'package:animewatch/routes.dart';
 import 'package:animewatch/shared/loading.dart';
 import 'package:animewatch/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   await initHiveForFlutter();

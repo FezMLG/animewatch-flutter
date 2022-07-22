@@ -1,10 +1,7 @@
 import 'package:animewatch/data/graphql/request/anilist_api.dart';
 import 'package:animewatch/services/models/page_of_series_model.dart';
-import 'package:animewatch/shared/drawer_nav.dart';
 import 'package:animewatch/shared/shared.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 
 class BrowseScreen extends StatelessWidget {
   const BrowseScreen({super.key});
@@ -21,9 +18,7 @@ class BrowseScreen extends StatelessWidget {
             child: ErrorMessage(message: snapshot.error.toString()),
           );
         } else if (snapshot.hasData) {
-          print("hasData**********");
           var series = snapshot.data!;
-          print(series);
           return Text(series.toString());
 
           // return Scaffold(
@@ -50,7 +45,7 @@ class BrowseScreen extends StatelessWidget {
           //   drawer: const DrawerNav(),
           // );
         } else {
-          return Text("nod atata");
+          return const Text("no data");
         }
       },
     );

@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphQLAPIClient {
   GraphQLClient _client() {
-    final HttpLink _httpLink = HttpLink("https://graphql.anilist.co/");
+    final HttpLink httpLink = HttpLink("https://graphql.anilist.co/");
 
     /// Policies
     /// - Remove cache
@@ -14,7 +16,7 @@ class GraphQLAPIClient {
       cache: GraphQLCache(
         store: HiveStore(),
       ),
-      link: _httpLink,
+      link: httpLink,
       defaultPolicies: DefaultPolicies(
         watchQuery: policies,
         query: policies,
@@ -25,12 +27,12 @@ class GraphQLAPIClient {
 
   /// Start execute
   Future<QueryResult> execute(String queries) async {
-    final WatchQueryOptions _options = WatchQueryOptions(
+    final WatchQueryOptions options = WatchQueryOptions(
       document: gql(queries),
-      pollInterval: Duration(seconds: 15),
+      pollInterval: const Duration(seconds: 15),
       fetchResults: true,
     );
-    return await _client().query(_options);
+    return await _client().query(options);
   }
 
   /// Handle exception
