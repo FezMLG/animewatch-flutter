@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'list_of_series_model.g.dart';
+part 'page_of_series_model.g.dart';
 
 @JsonSerializable()
 class PageOfSeries {
@@ -9,15 +9,15 @@ class PageOfSeries {
   });
 
   PageInfo pageInfo;
-  List<Media> media;
+  List<SeriesCard> media;
   factory PageOfSeries.fromJson(Map<String, dynamic> json) =>
       _$PageOfSeriesFromJson(json);
   Map<String, dynamic> toJson() => _$PageOfSeriesToJson(this);
 }
 
 @JsonSerializable()
-class Media {
-  Media({
+class SeriesCard {
+  SeriesCard({
     required this.id,
     required this.title,
     required this.coverImage,
@@ -27,8 +27,9 @@ class Media {
   Title title;
   CoverImage coverImage;
 
-  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
-  Map<String, dynamic> toJson() => _$MediaToJson(this);
+  factory SeriesCard.fromJson(Map<String, dynamic> json) =>
+      _$SeriesCardFromJson(json);
+  Map<String, dynamic> toJson() => _$SeriesCardToJson(this);
 }
 
 @JsonSerializable()

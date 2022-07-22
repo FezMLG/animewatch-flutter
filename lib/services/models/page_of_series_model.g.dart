@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list_of_series_model.dart';
+part of 'page_of_series_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -9,7 +9,7 @@ part of 'list_of_series_model.dart';
 PageOfSeries _$PageOfSeriesFromJson(Map<String, dynamic> json) => PageOfSeries(
       pageInfo: PageInfo.fromJson(json['pageInfo'] as Map<String, dynamic>),
       media: (json['media'] as List<dynamic>)
-          .map((e) => Media.fromJson(e as Map<String, dynamic>))
+          .map((e) => SeriesCard.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -19,14 +19,15 @@ Map<String, dynamic> _$PageOfSeriesToJson(PageOfSeries instance) =>
       'media': instance.media,
     };
 
-Media _$MediaFromJson(Map<String, dynamic> json) => Media(
+SeriesCard _$SeriesCardFromJson(Map<String, dynamic> json) => SeriesCard(
       id: json['id'] as int,
       title: Title.fromJson(json['title'] as Map<String, dynamic>),
       coverImage:
           CoverImage.fromJson(json['coverImage'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
+Map<String, dynamic> _$SeriesCardToJson(SeriesCard instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'coverImage': instance.coverImage,

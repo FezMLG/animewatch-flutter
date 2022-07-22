@@ -1,5 +1,5 @@
 import 'package:animewatch/data/graphql/request/anilist_api.dart';
-import 'package:animewatch/services/models/list_of_series_model.dart';
+import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:animewatch/shared/drawer_nav.dart';
 import 'package:animewatch/shared/shared.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class BrowseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Media>>(
+    return FutureBuilder<List<SeriesCard>>(
       future: AniList().getListOfSeries(id: 123),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

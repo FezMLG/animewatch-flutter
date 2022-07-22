@@ -1,14 +1,14 @@
-import 'package:animewatch/services/models/list_of_series_model.dart';
+import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:flutter/material.dart';
 
 class SeriesItem extends StatelessWidget {
-  final Media media;
-  const SeriesItem({super.key, required this.media});
+  final SeriesCard seriesCard;
+  const SeriesItem({super.key, required this.seriesCard});
 
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: media.coverImage.extraLarge,
+      tag: seriesCard.coverImage.extraLarge,
       child: Card(
         clipBehavior: Clip.antiAlias,
         child: InkWell(
@@ -27,7 +27,7 @@ class SeriesItem extends StatelessWidget {
                 flex: 3,
                 child: SizedBox(
                   child: Image.asset(
-                    media.coverImage.extraLarge,
+                    seriesCard.coverImage.extraLarge,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -36,7 +36,7 @@ class SeriesItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Text(
-                    media.title.romaji,
+                    seriesCard.title.romaji,
                     style: const TextStyle(
                       height: 1.5,
                       fontWeight: FontWeight.bold,

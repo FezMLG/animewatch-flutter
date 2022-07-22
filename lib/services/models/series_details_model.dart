@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'series_model.g.dart';
+part 'series_details_model.g.dart';
 
 @JsonSerializable()
-class Media {
-  Media({
+class SeriesDetails {
+  SeriesDetails({
     required this.id,
     required this.format,
     required this.status,
@@ -49,8 +49,9 @@ class Media {
   CoverImage coverImage;
   String bannerImage;
 
-  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
-  Map<String, dynamic> toJson() => _$MediaToJson(this);
+  factory SeriesDetails.fromJson(Map<String, dynamic> json) =>
+      _$SeriesDetailsFromJson(json);
+  Map<String, dynamic> toJson() => _$SeriesDetailsToJson(this);
 }
 
 @JsonSerializable()

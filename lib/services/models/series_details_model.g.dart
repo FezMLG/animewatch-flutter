@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'series_model.dart';
+part of 'series_details_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Media _$MediaFromJson(Map<String, dynamic> json) => Media(
+SeriesDetails _$SeriesDetailsFromJson(Map<String, dynamic> json) =>
+    SeriesDetails(
       id: json['id'] as int,
       format: json['format'] as String,
       status: json['status'] as String,
@@ -35,7 +36,8 @@ Media _$MediaFromJson(Map<String, dynamic> json) => Media(
       bannerImage: json['bannerImage'] as String,
     );
 
-Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
+Map<String, dynamic> _$SeriesDetailsToJson(SeriesDetails instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'format': instance.format,
       'status': instance.status,
