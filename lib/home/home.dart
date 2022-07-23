@@ -1,5 +1,6 @@
 import 'package:animewatch/login/login.dart';
 import 'package:animewatch/browse/browse.dart';
+import 'package:animewatch/services/auth.dart';
 import 'package:animewatch/shared/error.dart';
 import 'package:animewatch/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
+      stream: AuthService().userStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingScreen();
