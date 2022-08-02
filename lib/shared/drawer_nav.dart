@@ -14,7 +14,7 @@ class DrawerNav extends StatelessWidget {
               color: Colors.blue,
             ),
             child: Text(
-              'Drawer Header',
+              'AnimeWatch',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -23,23 +23,9 @@ class DrawerNav extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.message),
-            title: const Text('Messages'),
+            title: const Text('Browse'),
             onTap: () {
-              Navigator.pushNamed(context, '/');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.account_circle),
-            title: const Text('Profile'),
-            onTap: () {
-              Navigator.pushNamed(context, '/about');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () {
-              Navigator.pushNamed(context, '/about');
+              Navigator.pushNamed(context, '/browse');
             },
           ),
         ],
