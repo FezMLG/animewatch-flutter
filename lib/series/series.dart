@@ -11,6 +11,37 @@ class SeriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_transit)),
+              ],
+            ),
+            title: const Text('Tabs Demo'),
+          ),
+          body: TabBarView(
+            children: [
+              DetailsTab(seriesId: seriesId),
+              const Icon(Icons.directions_transit),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DetailsTab extends StatelessWidget {
+  final int seriesId;
+  const DetailsTab({super.key, required this.seriesId});
+
+  @override
+  Widget build(BuildContext context) {
     return FutureBuilder<SeriesDetails>(
       future: AniList().getDetailsOfSeries(id: seriesId),
       builder: (context, snapshot) {
@@ -24,19 +55,6 @@ class SeriesScreen extends StatelessWidget {
           SeriesDetails series = snapshot.data!;
 
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: HexColor.fromHex(series.coverImage.color),
-              title: Text(series.title.romaji),
-              actions: [
-                IconButton(
-                  icon: Icon(
-                    FontAwesomeIcons.circleUser,
-                    color: Colors.pink[200],
-                  ),
-                  onPressed: () => Navigator.pushNamed(context, '/'),
-                )
-              ],
-            ),
             body: ListView(children: [
               Hero(
                 tag: series.coverImage.extraLarge,
