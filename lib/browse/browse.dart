@@ -38,9 +38,9 @@ class BrowseScreen extends StatelessWidget {
             ),
             body: GridView.count(
               primary: false,
-              padding: const EdgeInsets.all(20.0),
-              crossAxisSpacing: 10.0,
-              crossAxisCount: 2,
+              padding: const EdgeInsets.all(40.0),
+              crossAxisSpacing: 20.0,
+              crossAxisCount: 5,
               children: series.map((e) => SeriesItem(seriesCard: e)).toList(),
             ),
             drawer: const DrawerNav(),

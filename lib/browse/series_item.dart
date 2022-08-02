@@ -46,6 +46,7 @@ class SeriesItem extends StatelessWidget {
                     ),
                     overflow: TextOverflow.fade,
                     softWrap: false,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
