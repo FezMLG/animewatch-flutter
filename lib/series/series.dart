@@ -22,7 +22,6 @@ class SeriesScreen extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           SeriesDetails series = snapshot.data!;
-          // return Text(series[0].title.romaji);
 
           return Scaffold(
             appBar: AppBar(
@@ -38,13 +37,22 @@ class SeriesScreen extends StatelessWidget {
                 )
               ],
             ),
-            body: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(20.0),
-              crossAxisSpacing: 10.0,
-              crossAxisCount: 2,
-              children: [Text(series.description)],
-            ),
+            body: ListView(children: [
+              Hero(
+                tag: series.coverImage.extraLarge,
+                child: Image.network(
+                  series.coverImage.extraLarge,
+                  fit: BoxFit.contain,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                ),
+              ),
+              Text(
+                series.title.romaji,
+                style: const TextStyle(
+                    height: 2, fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ]),
             drawer: const DrawerNav(),
           );
         } else {
