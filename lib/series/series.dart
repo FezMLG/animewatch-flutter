@@ -55,6 +55,25 @@ class DetailsTab extends StatelessWidget {
           SeriesDetails series = snapshot.data!;
 
           return Scaffold(
+            appBar: AppBar(
+              backgroundColor: HexColor.fromHex(series.coverImage.color),
+              title: Text(series.title.romaji),
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.circleUser,
+                    color: Colors.pink[200],
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/'),
+                )
+              ],
+              bottom: const TabBar(
+                tabs: [
+                  Tab(icon: Icon(Icons.directions_car)),
+                  Tab(icon: Icon(Icons.directions_transit)),
+                ],
+              ),
+            ),
             body: ListView(children: [
               Hero(
                 tag: series.coverImage.extraLarge,
