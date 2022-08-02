@@ -26,12 +26,13 @@ class GraphQLAPIClient {
   }
 
   /// Start execute
-  Future<QueryResult> execute(String queries) async {
+  Future<QueryResult> execute(String queries,
+      [Map<String, dynamic> variables = const {}]) async {
     final WatchQueryOptions options = WatchQueryOptions(
-      document: gql(queries),
-      pollInterval: const Duration(seconds: 15),
-      fetchResults: true,
-    );
+        document: gql(queries),
+        pollInterval: const Duration(seconds: 15),
+        fetchResults: true,
+        variables: variables);
     return await _client().query(options);
   }
 

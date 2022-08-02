@@ -1,5 +1,5 @@
 String titleInfoQuery = """
-query (\$id: Int = 133844) {
+query (\$id: Int!) {
   Media(id: \$id) {
     id
     format

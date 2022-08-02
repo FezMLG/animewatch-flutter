@@ -8,19 +8,19 @@ class SeriesDetails {
     required this.format,
     required this.status,
     required this.description,
-    required this.startDate,
-    required this.endDate,
+    this.startDate,
+    this.endDate,
     required this.season,
     required this.seasonYear,
     required this.episodes,
     required this.duration,
-    required this.trailer,
+    this.trailer,
     required this.genres,
     required this.averageScore,
     required this.meanScore,
     required this.popularity,
-    required this.tags,
-    required this.nextAiringEpisode,
+    this.tags,
+    this.nextAiringEpisode,
     required this.siteUrl,
     required this.title,
     required this.coverImage,
@@ -31,19 +31,19 @@ class SeriesDetails {
   String format;
   String status;
   String description;
-  Date startDate;
-  Date endDate;
+  Date? startDate;
+  Date? endDate;
   String season;
   int seasonYear;
   int episodes;
   int duration;
-  Trailer trailer;
+  Trailer? trailer;
   List<String> genres;
   int averageScore;
   int meanScore;
   int popularity;
-  List<Tag> tags;
-  NextAiringEpisode nextAiringEpisode;
+  List<Tag>? tags;
+  NextAiringEpisode? nextAiringEpisode;
   String siteUrl;
   Title title;
   CoverImage coverImage;
@@ -76,14 +76,14 @@ class CoverImage {
 @JsonSerializable()
 class Date {
   Date({
-    required this.year,
-    required this.month,
-    required this.day,
+    this.year,
+    this.month,
+    this.day,
   });
 
-  int year;
-  int month;
-  int day;
+  int? year;
+  int? month;
+  int? day;
 
   factory Date.fromJson(Map<String, dynamic> json) => _$DateFromJson(json);
   Map<String, dynamic> toJson() => _$DateToJson(this);
@@ -123,11 +123,11 @@ class Tag {
 @JsonSerializable()
 class Title {
   Title({
-    required this.english,
+    this.english,
     required this.romaji,
   });
 
-  String english;
+  String? english;
   String romaji;
 
   factory Title.fromJson(Map<String, dynamic> json) => _$TitleFromJson(json);

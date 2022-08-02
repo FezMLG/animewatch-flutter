@@ -1,3 +1,5 @@
+import 'package:animewatch/browse/browse.dart';
+import 'package:animewatch/series/series.dart';
 import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +14,14 @@ class SeriesItem extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          // onTap: () {
-          //   Navigator.of(context).push(
-          //     MaterialPageRoute(
-          //       builder: (BuildContext context) => TopicScreen(topic: topic),
-          //     ),
-          //   );
-          // },
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    SeriesScreen(seriesId: seriesCard.id),
+              ),
+            );
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +29,7 @@ class SeriesItem extends StatelessWidget {
               Flexible(
                 flex: 3,
                 child: SizedBox(
-                  child: Image.asset(
+                  child: Image.network(
                     seriesCard.coverImage.extraLarge,
                     fit: BoxFit.contain,
                   ),

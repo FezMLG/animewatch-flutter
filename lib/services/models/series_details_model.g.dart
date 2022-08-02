@@ -12,23 +12,31 @@ SeriesDetails _$SeriesDetailsFromJson(Map<String, dynamic> json) =>
       format: json['format'] as String,
       status: json['status'] as String,
       description: json['description'] as String,
-      startDate: Date.fromJson(json['startDate'] as Map<String, dynamic>),
-      endDate: Date.fromJson(json['endDate'] as Map<String, dynamic>),
+      startDate: json['startDate'] == null
+          ? null
+          : Date.fromJson(json['startDate'] as Map<String, dynamic>),
+      endDate: json['endDate'] == null
+          ? null
+          : Date.fromJson(json['endDate'] as Map<String, dynamic>),
       season: json['season'] as String,
       seasonYear: json['seasonYear'] as int,
       episodes: json['episodes'] as int,
       duration: json['duration'] as int,
-      trailer: Trailer.fromJson(json['trailer'] as Map<String, dynamic>),
+      trailer: json['trailer'] == null
+          ? null
+          : Trailer.fromJson(json['trailer'] as Map<String, dynamic>),
       genres:
           (json['genres'] as List<dynamic>).map((e) => e as String).toList(),
       averageScore: json['averageScore'] as int,
       meanScore: json['meanScore'] as int,
       popularity: json['popularity'] as int,
-      tags: (json['tags'] as List<dynamic>)
-          .map((e) => Tag.fromJson(e as Map<String, dynamic>))
+      tags: (json['tags'] as List<dynamic>?)
+          ?.map((e) => Tag.fromJson(e as Map<String, dynamic>))
           .toList(),
-      nextAiringEpisode: NextAiringEpisode.fromJson(
-          json['nextAiringEpisode'] as Map<String, dynamic>),
+      nextAiringEpisode: json['nextAiringEpisode'] == null
+          ? null
+          : NextAiringEpisode.fromJson(
+              json['nextAiringEpisode'] as Map<String, dynamic>),
       siteUrl: json['siteUrl'] as String,
       title: Title.fromJson(json['title'] as Map<String, dynamic>),
       coverImage:
@@ -77,9 +85,9 @@ Map<String, dynamic> _$CoverImageToJson(CoverImage instance) =>
     };
 
 Date _$DateFromJson(Map<String, dynamic> json) => Date(
-      year: json['year'] as int,
-      month: json['month'] as int,
-      day: json['day'] as int,
+      year: json['year'] as int?,
+      month: json['month'] as int?,
+      day: json['day'] as int?,
     );
 
 Map<String, dynamic> _$DateToJson(Date instance) => <String, dynamic>{
@@ -113,7 +121,7 @@ Map<String, dynamic> _$TagToJson(Tag instance) => <String, dynamic>{
     };
 
 Title _$TitleFromJson(Map<String, dynamic> json) => Title(
-      english: json['english'] as String,
+      english: json['english'] as String?,
       romaji: json['romaji'] as String,
     );
 
