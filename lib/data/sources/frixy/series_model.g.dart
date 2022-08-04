@@ -31,6 +31,7 @@ Episode _$EpisodeFromJson(Map<String, dynamic> json) => Episode(
       title: json['title'] as String,
       description: json['description'] as String,
       number: json['number'] as int,
+      banner: json['banner'] as String,
       players: (json['players'] as List<dynamic>)
           .map((e) => Player.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -42,6 +43,7 @@ Map<String, dynamic> _$EpisodeToJson(Episode instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
+      'banner': instance.banner,
       'number': instance.number,
       'players': instance.players,
       'added_at': instance.addedAt,

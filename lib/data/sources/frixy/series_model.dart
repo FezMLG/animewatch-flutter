@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'series_model.g.dart';
 
@@ -28,6 +29,7 @@ class Episode {
     required this.id,
     required this.title,
     required this.description,
+    required this.banner,
     required this.number,
     required this.players,
     required this.addedAt,
@@ -37,6 +39,7 @@ class Episode {
   String id;
   String title;
   String description;
+  String banner;
   int number;
   List<Player> players;
   String addedAt;
