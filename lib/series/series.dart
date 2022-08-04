@@ -1,7 +1,7 @@
 import 'package:animewatch/data/graphql/request/anilist_api.dart';
 import 'package:animewatch/data/sources/frixy/frixy.dart';
-import 'package:animewatch/data/sources/frixy/search_model.dart';
 import 'package:animewatch/data/sources/frixy/series_model.dart';
+import 'package:animewatch/series/episode_item.dart';
 import 'package:animewatch/services/models/series_details_model.dart';
 import 'package:animewatch/shared/hex_color.dart';
 import 'package:animewatch/shared/shared.dart';
@@ -32,7 +32,9 @@ class EpisodeListScreen extends StatelessWidget {
               padding: const EdgeInsets.all(40.0),
               crossAxisSpacing: 20.0,
               crossAxisCount: 5,
-              children: series.episodes.map((e) => Text(e.title)).toList(),
+              children: series.episodes
+                  .map((e) => EpisodeItem(episodeCard: e))
+                  .toList(),
             ),
             drawer: const DrawerNav(),
           );
