@@ -64,7 +64,7 @@ query (\$id: Int, \$page: Int, \$perPage: Int, \$search: String) {
       hasNextPage
       perPage
     }
-    media(id: \$id, search: \$search) {
+    media(id: \$id, search: \$search, isAdult: false, season: SUMMER, seasonYear: 2022, sort: [POPULARITY_DESC]) {
       id
       title {
         romaji
