@@ -8,10 +8,10 @@ part of 'series_model.dart';
 
 Series _$SeriesFromJson(Map<String, dynamic> json) => Series(
       id: json['id'] as String,
-      addedAt: json['addedAt'] as String,
-      lastEdit: json['lastEdit'] as String,
+      addedAt: json['added_at'] as String,
+      lastEdit: json['last_edit'] as String,
       link: json['link'] as String,
-      epCount: json['epCount'] as int,
+      epCount: json['ep_count'] as int,
       episodes: (json['episodes'] as List<dynamic>)
           .map((e) => Episode.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,10 +19,10 @@ Series _$SeriesFromJson(Map<String, dynamic> json) => Series(
 
 Map<String, dynamic> _$SeriesToJson(Series instance) => <String, dynamic>{
       'id': instance.id,
-      'addedAt': instance.addedAt,
-      'lastEdit': instance.lastEdit,
+      'added_at': instance.addedAt,
+      'last_edit': instance.lastEdit,
       'link': instance.link,
-      'epCount': instance.epCount,
+      'ep_count': instance.epCount,
       'episodes': instance.episodes,
     };
 
@@ -34,8 +34,8 @@ Episode _$EpisodeFromJson(Map<String, dynamic> json) => Episode(
       players: (json['players'] as List<dynamic>)
           .map((e) => Player.fromJson(e as Map<String, dynamic>))
           .toList(),
-      addedAt: json['addedAt'] as String,
-      lastEdit: json['lastEdit'] as String,
+      addedAt: json['added_at'] as String,
+      lastEdit: json['last_edit'] as String,
     );
 
 Map<String, dynamic> _$EpisodeToJson(Episode instance) => <String, dynamic>{
@@ -44,8 +44,8 @@ Map<String, dynamic> _$EpisodeToJson(Episode instance) => <String, dynamic>{
       'description': instance.description,
       'number': instance.number,
       'players': instance.players,
-      'addedAt': instance.addedAt,
-      'lastEdit': instance.lastEdit,
+      'added_at': instance.addedAt,
+      'last_edit': instance.lastEdit,
     };
 
 Player _$PlayerFromJson(Map<String, dynamic> json) => Player(

@@ -1,4 +1,7 @@
 import 'package:animewatch/data/graphql/request/anilist_api.dart';
+import 'package:animewatch/data/sources/frixy/frixy.dart';
+import 'package:animewatch/data/sources/frixy/search_model.dart';
+import 'package:animewatch/data/sources/frixy/series_model.dart';
 import 'package:animewatch/services/models/series_details_model.dart';
 import 'package:animewatch/shared/hex_color.dart';
 import 'package:animewatch/shared/shared.dart';
@@ -6,12 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EpisodeListScreen extends StatelessWidget {
-  const EpisodeListScreen({super.key});
+  final String seriesName;
+  const EpisodeListScreen({super.key, required this.seriesName});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List>(
-      future: AniList().getListOfSeries(),
+    return FutureBuilder<Series>(
+      future: FrixySubs().fetchEpisodes(seriesName),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingScreen();
@@ -20,15 +24,16 @@ class EpisodeListScreen extends StatelessWidget {
             child: ErrorMessage(message: snapshot.error.toString()),
           );
         } else if (snapshot.hasData) {
-          List series = snapshot.data!;
+          Series series = snapshot.data!;
 
           return Scaffold(
             body: GridView.count(
-                primary: false,
-                padding: const EdgeInsets.all(40.0),
-                crossAxisSpacing: 20.0,
-                crossAxisCount: 5,
-                children: const <Widget>[Text('ad'), Text('asdad')]),
+              primary: false,
+              padding: const EdgeInsets.all(40.0),
+              crossAxisSpacing: 20.0,
+              crossAxisCount: 5,
+              children: series.episodes.map((e) => Text(e.title)).toList(),
+            ),
             drawer: const DrawerNav(),
           );
         } else {
@@ -104,7 +109,9 @@ class SeriesScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                     ]),
-                    const EpisodeListScreen(),
+                    EpisodeListScreen(
+                      seriesName: series.title.romaji,
+                    ),
                   ],
                 ),
                 drawer: const DrawerNav(),

@@ -8,15 +8,15 @@ class Search {
     required this.rowsNum,
   });
 
-  List<Series> series;
+  List<SeriesFound> series;
   int rowsNum;
   factory Search.fromJson(Map<String, dynamic> json) => _$SearchFromJson(json);
   Map<String, dynamic> toJson() => _$SearchToJson(this);
 }
 
 @JsonSerializable()
-class Series {
-  Series({
+class SeriesFound {
+  SeriesFound({
     required this.id,
     required this.title,
     required this.subtitles,
@@ -33,6 +33,7 @@ class Series {
   String lastEdit;
   String link;
   int epCount;
-  factory Series.fromJson(Map<String, dynamic> json) => _$SeriesFromJson(json);
-  Map<String, dynamic> toJson() => _$SeriesToJson(this);
+  factory SeriesFound.fromJson(Map<String, dynamic> json) =>
+      _$SeriesFoundFromJson(json);
+  Map<String, dynamic> toJson() => _$SeriesFoundToJson(this);
 }

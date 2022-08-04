@@ -8,33 +8,34 @@ part of 'search_model.dart';
 
 Search _$SearchFromJson(Map<String, dynamic> json) => Search(
       series: (json['series'] as List<dynamic>)
-          .map((e) => Series.fromJson(e as Map<String, dynamic>))
+          .map((e) => SeriesFound.fromJson(e as Map<String, dynamic>))
           .toList(),
-      rowsNum: json['rowsNum'] as int,
+      rowsNum: json['rows_num'] as int,
     );
 
 Map<String, dynamic> _$SearchToJson(Search instance) => <String, dynamic>{
       'series': instance.series,
-      'rowsNum': instance.rowsNum,
+      'rows_num': instance.rowsNum,
     };
 
-Series _$SeriesFromJson(Map<String, dynamic> json) => Series(
+SeriesFound _$SeriesFoundFromJson(Map<String, dynamic> json) => SeriesFound(
       id: json['id'] as String,
       title: json['title'] as String,
       subtitles:
           (json['subtitles'] as List<dynamic>).map((e) => e as String).toList(),
-      addedAt: json['addedAt'] as String,
-      lastEdit: json['lastEdit'] as String,
+      addedAt: json['added_at'] as String,
+      lastEdit: json['last_edit'] as String,
       link: json['link'] as String,
-      epCount: json['epCount'] as int,
+      epCount: json['ep_count'] as int,
     );
 
-Map<String, dynamic> _$SeriesToJson(Series instance) => <String, dynamic>{
+Map<String, dynamic> _$SeriesFoundToJson(SeriesFound instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'subtitles': instance.subtitles,
-      'addedAt': instance.addedAt,
-      'lastEdit': instance.lastEdit,
+      'added_at': instance.addedAt,
+      'last_edit': instance.lastEdit,
       'link': instance.link,
-      'epCount': instance.epCount,
+      'ep_count': instance.epCount,
     };
