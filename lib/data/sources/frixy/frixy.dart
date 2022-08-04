@@ -7,14 +7,11 @@ class FrixySubs {
   Future<Search> searchForSeries(String toSearch) async {
     String uri = Uri.encodeFull(
         'https://frixysubs.pl/api/anime?limit=15&offset=0&search=${toSearch.toLowerCase()}');
-    print(uri);
     try {
       final response = await http.get(Uri.parse(uri));
-
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
         // then parse the JSON.
-        print(response.body);
         Search found = Search.fromJson(jsonDecode(response.body));
         return found;
       } else {
