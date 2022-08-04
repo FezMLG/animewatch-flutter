@@ -14,7 +14,7 @@ class AniList extends GraphQLAPIClient {
   Future<SeriesDetails> getDetailsOfSeries({required int id}) async {
     final result = await execute(titleInfoQuery, {'id': id});
     Map<String, dynamic> snapshot = result.data!["Media"];
-    var detailsOfSeries = await SeriesDetails.fromJson(snapshot);
+    var detailsOfSeries = SeriesDetails.fromJson(snapshot);
     return detailsOfSeries;
   }
 }
