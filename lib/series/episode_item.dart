@@ -1,5 +1,6 @@
 import 'package:animewatch/browse/browse.dart';
 import 'package:animewatch/data/sources/frixy/series_model.dart';
+import 'package:animewatch/series/episode.dart';
 import 'package:animewatch/series/series.dart';
 import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:flutter/material.dart';
@@ -15,27 +16,19 @@ class EpisodeItem extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          // onTap: () {
-          //   Navigator.of(context).push(
-          //     MaterialPageRoute(
-          //       builder: (BuildContext context) =>
-          //           SeriesScreen(seriesId: episodeCard.id),
-          //     ),
-          //   );
-          // },
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => EpisodeScreen(
+                  episode: episodeCard,
+                ),
+              ),
+            );
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
-                flex: 3,
-                child: SizedBox(
-                  child: Image.network(
-                    episodeCard.banner,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
