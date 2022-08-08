@@ -4,6 +4,7 @@ import 'package:animewatch/shared/loading.dart';
 import 'package:animewatch/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() async {
@@ -49,10 +50,16 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return GraphQLProvider(
             client: client,
-            child: MaterialApp(
-                debugShowCheckedModeBanner: true,
-                routes: appRoutes,
-                theme: appTheme),
+            child: Shortcuts(
+              shortcuts: <LogicalKeySet, Intent>{
+                LogicalKeySet(LogicalKeyboardKey.select):
+                    const ActivateIntent(),
+              },
+              child: MaterialApp(
+                  debugShowCheckedModeBanner: true,
+                  routes: appRoutes,
+                  theme: appTheme),
+            ),
           );
         }
 
