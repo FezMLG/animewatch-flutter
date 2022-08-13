@@ -1,11 +1,4 @@
-import 'dart:ffi';
-import 'package:web_scraper/web_scraper.dart';
-import 'package:animewatch/browse/browse.dart';
 import 'package:animewatch/data/sources/frixy/series_model.dart';
-import 'package:animewatch/series/episode.dart';
-import 'package:animewatch/series/series.dart';
-import 'package:animewatch/services/models/page_of_series_model.dart';
-import 'package:animewatch/shared/shared.dart';
 import 'package:animewatch/shared/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -50,13 +43,10 @@ class EpisodeItem extends StatelessWidget {
                           ))
                       .toList(),
                   onSelected: (Player value) async {
-                    print(
-                        '88*******************************************************');
-                    var videoLink = await DecryptKey(value.link);
+                    var videoLink = await decryptKey(value.link);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          //fetch do cda po html -> szukanie video i src -> webviewplayer z filmem
                           builder: (BuildContext context) => VideoPlayer(
                                 listOfSources: [videoLink],
                                 title: episodeCard.title,
@@ -82,7 +72,7 @@ class EpisodeItem extends StatelessWidget {
     return [''];
   }
 
-  List<String> remove_keys = [
+  final List<String> removeKeys = [
     "_XDDD",
     "_CDA",
     "_ADC",
@@ -92,7 +82,7 @@ class EpisodeItem extends StatelessWidget {
     "_IKSDE"
   ];
 
-  Future<String> DecryptKey(String key, {bool https = false}) async {
+  Future<String> decryptKey(String key, {bool https = false}) async {
     var result = '';
     RegExp file = RegExp('"file":"(.*?)(?:")');
     var res = await http.get(Uri.parse(key));
@@ -101,11 +91,11 @@ class EpisodeItem extends StatelessWidget {
     String match = '';
     match = Uri.decodeFull(firstMatch.elementAt(0).group(1)!);
 
-    for (var vkey in remove_keys) {
+    for (var vkey in removeKeys) {
       match = match.replaceAll(vkey, "");
     }
 
-    for (String c in match!.split('')) {
+    for (String c in match.split('')) {
       if (c.codeUnitAt(0) >= 33 && c.codeUnitAt(0) <= 126) {
         result += String.fromCharCode(33 + ((c.codeUnitAt(0) + 14) % 94));
       } else {

@@ -1,6 +1,5 @@
 import 'package:animewatch/data/sources/frixy/series_model.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class EpisodeScreen extends StatelessWidget {
   final Player player;

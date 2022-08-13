@@ -1,4 +1,3 @@
-import 'package:animewatch/browse/browse.dart';
 import 'package:animewatch/series/series.dart';
 import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:flutter/material.dart';
