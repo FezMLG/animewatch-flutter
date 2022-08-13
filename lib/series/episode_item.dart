@@ -68,21 +68,16 @@ class EpisodeItem extends StatelessWidget {
     );
   }
 
-  Future<List<String>> getCdaSources(String cdaLink) async {
-    return [''];
-  }
-
-  final List<String> removeKeys = [
-    "_XDDD",
-    "_CDA",
-    "_ADC",
-    "_CXD",
-    "_QWE",
-    "_Q5",
-    "_IKSDE"
-  ];
-
   Future<String> decryptKey(String key, {bool https = false}) async {
+    List<String> removeKeys = [
+      "_XDDD",
+      "_CDA",
+      "_ADC",
+      "_CXD",
+      "_QWE",
+      "_Q5",
+      "_IKSDE"
+    ];
     var result = '';
     RegExp file = RegExp('"file":"(.*?)(?:")');
     var res = await http.get(Uri.parse(key));
