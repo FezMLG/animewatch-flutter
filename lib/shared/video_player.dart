@@ -16,11 +16,11 @@ class VideoPlayer extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _ChewieDemoState();
+    return _ChewieState();
   }
 }
 
-class _ChewieDemoState extends State<VideoPlayer> {
+class _ChewieState extends State<VideoPlayer> {
   TargetPlatform? _platform;
   late VideoPlayerController _videoPlayerController1;
   late VideoPlayerController _videoPlayerController2;
@@ -62,7 +62,6 @@ class _ChewieDemoState extends State<VideoPlayer> {
       fullScreenByDefault: true,
       progressIndicatorDelay:
           bufferDelay != null ? Duration(milliseconds: bufferDelay!) : null,
-
       additionalOptions: (context) {
         return <OptionItem>[
           OptionItem(
