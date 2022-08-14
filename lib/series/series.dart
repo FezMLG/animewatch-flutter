@@ -93,24 +93,48 @@ class SeriesScreen extends StatelessWidget {
                 ),
                 body: TabBarView(
                   children: [
-                    ListView(children: [
-                      Hero(
-                        tag: series.coverImage.extraLarge,
-                        child: Image.network(
-                          series.coverImage.extraLarge,
-                          fit: BoxFit.contain,
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
+                    ListView(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 30),
+                          child: Image.network(
+                            series.bannerImage,
+                            width: MediaQuery.of(context).size.width,
+                          ),
                         ),
-                      ),
-                      Text(
-                        series.title.romaji,
-                        style: const TextStyle(
-                            height: 2,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ]),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 50),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                series.title.romaji,
+                                style: const TextStyle(
+                                    height: 2,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                series.title.english,
+                                style: const TextStyle(
+                                    height: 0,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Text(
+                                  series.description,
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                     EpisodeListScreen(
                       seriesName: series.title.romaji,
                     ),

@@ -121,7 +121,7 @@ Map<String, dynamic> _$TagToJson(Tag instance) => <String, dynamic>{
     };
 
 Title _$TitleFromJson(Map<String, dynamic> json) => Title(
-      english: json['english'] as String?,
+      english: json['english'] as String? ?? '',
       romaji: json['romaji'] as String,
     );
 

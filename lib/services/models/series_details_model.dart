@@ -123,11 +123,11 @@ class Tag {
 @JsonSerializable()
 class Title {
   Title({
-    this.english,
+    this.english = '',
     required this.romaji,
   });
 
-  String? english;
+  String english;
   String romaji;
 
   factory Title.fromJson(Map<String, dynamic> json) => _$TitleFromJson(json);
