@@ -5,8 +5,11 @@ import 'package:animewatch/series/episode_item.dart';
 import 'package:animewatch/services/models/series_details_model.dart';
 import 'package:animewatch/shared/hex_color.dart';
 import 'package:animewatch/shared/shared.dart';
+import 'package:animewatch/shared/youtube_player.dart';
+import 'package:animewatch/ui/focus_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive/hive.dart';
 
 class EpisodeListScreen extends StatelessWidget {
   final String seriesName;
@@ -95,11 +98,13 @@ class SeriesScreen extends StatelessWidget {
                   children: [
                     ListView(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 30),
-                          child: Image.network(
-                            series.bannerImage,
-                            width: MediaQuery.of(context).size.width,
+                        Focus(
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 30),
+                            child: Image.network(
+                              series.bannerImage,
+                              width: MediaQuery.of(context).size.width,
+                            ),
                           ),
                         ),
                         Padding(
@@ -107,32 +112,36 @@ class SeriesScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                series.title.romaji,
-                                style: const TextStyle(
-                                    height: 2,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold),
+                              FocusText(
+                                text: series.title.romaji,
+                                height: 2,
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Text(
-                                series.title.english,
-                                style: const TextStyle(
-                                    height: 0,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300),
+                              FocusText(
+                                text: series.title.english,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                padding: const EdgeInsets.only(top: 0),
+                              ),
+                              FocusText(text: series.description),
+                              const FocusText(
+                                text: "Trailer",
+                                padding: EdgeInsets.only(top: 40),
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 20),
-                                child: Text(
-                                  series.description,
-                                  style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal),
+                                child: SizedBox(
+                                  width: 400,
+                                  child: YoutubePlayer(
+                                      videoId: series.trailer!.id),
                                 ),
-                              ),
+                              )
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                     EpisodeListScreen(
