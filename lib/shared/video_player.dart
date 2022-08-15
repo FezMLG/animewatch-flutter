@@ -62,6 +62,7 @@ class _ChewieState extends State<VideoPlayer> {
       fullScreenByDefault: true,
       progressIndicatorDelay:
           bufferDelay != null ? Duration(milliseconds: bufferDelay!) : null,
+      allowedScreenSleep: false,
       additionalOptions: (context) {
         return <OptionItem>[
           OptionItem(
