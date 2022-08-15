@@ -2,11 +2,33 @@ import 'package:animewatch/browse/series_item.dart';
 import 'package:animewatch/data/graphql/request/anilist_api.dart';
 import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:animewatch/shared/shared.dart';
+import 'package:animewatch/ui/exposed_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/single_child_widget.dart';
 
 class BrowseScreen extends StatelessWidget {
   const BrowseScreen({super.key});
+
+  String currentMonth() {
+    int now = DateTime.now().month;
+    switch (now) {
+      case 12:
+      case 1:
+      case 2:
+        return 'Winter';
+      case 3:
+      case 4:
+      case 5:
+        return 'Spring';
+      case 6:
+      case 7:
+      case 8:
+        return 'Summer';
+      default:
+        return 'Fall';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +58,37 @@ class BrowseScreen extends StatelessWidget {
                 )
               ],
             ),
-            body: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(40.0),
-              crossAxisSpacing: 20.0,
-              crossAxisCount: 5,
-              children: series.map((e) => SeriesItem(seriesCard: e)).toList(),
+            body: Column(
+              children: [
+                Focus(
+                  autofocus: true,
+                  child: ExposedDropdownMenu(
+                    dropDownOptions: const [
+                      'Winter',
+                      'Spring',
+                      'Summer',
+                      'Fall'
+                    ],
+                    defaultValue: currentMonth(),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: [
+                          for (var item in series)
+                            SeriesItem(
+                              seriesCard: item,
+                            )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             drawer: const DrawerNav(),
           );

@@ -8,45 +8,41 @@ class SeriesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: seriesCard.coverImage.extraLarge,
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    SeriesScreen(seriesId: seriesCard.id),
-              ),
-            );
-          },
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  SeriesScreen(seriesId: seriesCard.id),
+            ),
+          );
+        },
+        child: SizedBox(
+          height: 340,
+          width: 200,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
-                flex: 3,
-                child: SizedBox(
-                  child: Image.network(
-                    seriesCard.coverImage.extraLarge,
-                    fit: BoxFit.contain,
-                  ),
-                ),
+              Image.network(
+                height: 300,
+                width: 200,
+                seriesCard.coverImage.extraLarge,
+                fit: BoxFit.cover,
               ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
-                  child: Text(
-                    seriesCard.title.romaji,
-                    style: const TextStyle(
-                      height: 1.5,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    overflow: TextOverflow.fade,
-                    softWrap: false,
-                    textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+                child: Text(
+                  seriesCard.title.romaji,
+                  style: const TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    height: 1.5,
+                    fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
+                  softWrap: true,
                 ),
               ),
             ],
