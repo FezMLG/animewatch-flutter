@@ -41,7 +41,7 @@ class ExposedDropdownMenuState extends State<ExposedDropdownMenu> {
       }).toList(),
       value: _dropdownValue,
       onChanged: dropdownCallback,
-      // Customizatons
+      // Customizations
       //iconSize: 42.0,
       //iconEnabledColor: Colors.green,
       //icon: const Icon(Icons.flutter_dash),
