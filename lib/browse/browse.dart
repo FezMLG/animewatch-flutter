@@ -5,7 +5,6 @@ import 'package:animewatch/shared/shared.dart';
 import 'package:animewatch/ui/exposed_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/single_child_widget.dart';
 
 class BrowseScreen extends StatelessWidget {
   const BrowseScreen({super.key});
@@ -60,8 +59,8 @@ class BrowseScreen extends StatelessWidget {
             ),
             body: Column(
               children: [
-                Focus(
-                  autofocus: true,
+                SizedBox(
+                  width: MediaQuery.of(context).size.height,
                   child: ExposedDropdownMenu(
                     dropDownOptions: const [
                       'Winter',
