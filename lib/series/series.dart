@@ -32,21 +32,24 @@ class EpisodeListScreen extends StatelessWidget {
           return Scaffold(
             body: Padding(
               padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Wrap(
-                        spacing: 20,
-                        runSpacing: 20,
-                        children: [
-                          for (var item in series.episodes)
-                            EpisodeItem(episodeCard: item),
-                        ],
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Wrap(
+                          spacing: 20,
+                          runSpacing: 20,
+                          children: [
+                            for (var item in series.episodes)
+                              EpisodeItem(episodeCard: item),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             drawer: const DrawerNav(),
