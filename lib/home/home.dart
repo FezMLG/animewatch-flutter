@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
             child: ErrorMessage(),
           );
         } else if (snapshot.hasData) {
-          return const BrowseScreen();
+          return BrowseScreen();
         } else {
           return const LoginScreen();
         }

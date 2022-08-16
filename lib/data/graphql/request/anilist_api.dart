@@ -4,7 +4,7 @@ import 'package:animewatch/services/models/page_of_series_model.dart';
 import 'package:animewatch/services/models/series_details_model.dart';
 
 class AniList extends GraphQLAPIClient {
-  Future<List<SeriesCard>> getListOfSeries() async {
+  Future<List<SeriesCard>> getListOfSeries(String season, int year) async {
     final result = await execute(listOfAnimeQuery);
     List snapshot = result.data!["Page"]["media"];
     var listOfSeries = snapshot.map((d) => SeriesCard.fromJson(d)).toList();

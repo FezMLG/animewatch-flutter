@@ -7,9 +7,22 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BrowseScreen extends StatelessWidget {
-  const BrowseScreen({super.key});
+  BrowseScreen({super.key});
 
-  String currentMonth() {
+  DateTime? selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    selectedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDate!,
+      firstDate: DateTime(1950),
+      lastDate: DateTime(2023),
+      initialDatePickerMode: DatePickerMode.year,
+    );
+    selectedDate ??= DateTime.now();
+  }
+
+  String currentSeason() {
     int now = DateTime.now().month;
     switch (now) {
       case 12:
@@ -32,7 +45,7 @@ class BrowseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<SeriesCard>>(
-      future: AniList().getListOfSeries(),
+      future: AniList().getListOfSeries(currentSeason(), selectedDate!.year),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingScreen();
@@ -59,16 +72,22 @@ class BrowseScreen extends StatelessWidget {
             ),
             body: Column(
               children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.height,
-                  child: ExposedDropdownMenu(
-                    dropDownOptions: const [
-                      'Winter',
-                      'Spring',
-                      'Summer',
-                      'Fall'
-                    ],
-                    defaultValue: currentMonth(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 20, right: 20, top: 20, bottom: 20),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        Text('${currentSeason()} ${selectedDate!.year}'),
+                        SizedBox(
+                          child: OutlinedButton(
+                            onPressed: () => _selectDate(context),
+                            child: const Text('Change season'),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -98,3 +117,28 @@ class BrowseScreen extends StatelessWidget {
     );
   }
 }
+
+// SizedBox(
+//                           child: ExposedDropdownMenu(
+//                             dropDownOptions: const [
+//                               'Winter',
+//                               'Spring',
+//                               'Summer',
+//                               'Fall'
+//                             ],
+//                             defaultValue: currentSeason(),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           child: OutlinedButton(
+//                             onPressed: () => _selectDate(context),
+//                             child: Text(selectedDate!.year.toString()),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           child: ElevatedButton(
+//                             onPressed: () async =>
+//                                 await AniList().getListOfSeries('Winter', 2021),
+//                             child: const Text('Browse'),
+//                           ),
+//                         ),

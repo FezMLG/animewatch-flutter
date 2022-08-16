@@ -5,5 +5,5 @@ import 'package:animewatch/login/login.dart';
 var appRoutes = {
   '/': (context) => const HomeScreen(),
   '/login': (context) => const LoginScreen(),
-  '/browse': (context) => const BrowseScreen(),
+  '/browse': (context) => BrowseScreen(),
 };

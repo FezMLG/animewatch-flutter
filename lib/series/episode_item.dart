@@ -12,12 +12,14 @@ class EpisodeItem extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Padding(
+        child: SizedBox(
+          width: 200,
+          height: 100,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Text(
                   '${episodeCard.number}. ${episodeCard.title}',
@@ -30,9 +32,7 @@ class EpisodeItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-            ),
-            Flexible(
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: PopupMenuButton(
                   icon: const Icon(Icons.more_vert),
@@ -61,8 +61,8 @@ class EpisodeItem extends StatelessWidget {
                   },
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

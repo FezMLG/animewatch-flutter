@@ -30,14 +30,24 @@ class EpisodeListScreen extends StatelessWidget {
           Series series = snapshot.data!;
 
           return Scaffold(
-            body: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(40.0),
-              crossAxisSpacing: 20.0,
-              crossAxisCount: 5,
-              children: series.episodes
-                  .map((e) => EpisodeItem(episodeCard: e))
-                  .toList(),
+            body: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: [
+                          for (var item in series.episodes)
+                            EpisodeItem(episodeCard: item),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             drawer: const DrawerNav(),
           );
