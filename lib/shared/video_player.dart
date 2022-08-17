@@ -41,7 +41,7 @@ class _ChewieState extends State<VideoPlayer> {
 
   Future<void> initializePlayer() async {
     _videoPlayerController = VideoPlayerController.network(widget.source);
-    await Future.wait([_videoPlayerController.initialize()]);
+    await _videoPlayerController.initialize();
     _createChewieController();
     setState(() {});
   }
@@ -50,7 +50,6 @@ class _ChewieState extends State<VideoPlayer> {
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
       autoPlay: true,
-      looping: true,
       fullScreenByDefault: true,
       progressIndicatorDelay:
           bufferDelay != null ? Duration(milliseconds: bufferDelay!) : null,
