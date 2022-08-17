@@ -128,7 +128,7 @@ class SeriesScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 50),
+                        padding: const EdgeInsets.all(50),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -151,14 +151,14 @@ class SeriesScreen extends StatelessWidget {
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(top: 20),
-                            //   child: SizedBox(
-                            //     width: 400,
-                            //     child:
-                            //         YoutubePlayer(videoId: series.trailer!.id),
-                            //   ),
-                            // )
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: SizedBox(
+                                width: 400,
+                                child:
+                                    YoutubePlayer(videoId: series.trailer!.id),
+                              ),
+                            )
                           ],
                         ),
                       ),
