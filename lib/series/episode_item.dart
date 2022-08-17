@@ -1,4 +1,6 @@
 import 'package:animewatch/data/sources/frixy/series_model.dart';
+import 'package:animewatch/shared/other_player.dart';
+import 'package:animewatch/shared/shared.dart';
 import 'package:animewatch/shared/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -44,17 +46,16 @@ class EpisodeItem extends StatelessWidget {
                       .toList(),
                   onSelected: (Player value) async {
                     var videoLink = await decryptKey(value.link);
+                    print(videoLink);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (BuildContext context) => VideoPlayer(
-                                listOfSources: [videoLink],
+                                source: videoLink,
                                 title: episodeCard.title,
                               )
-                          // WebViewPlayer(
-                          //   selectedUrl:
-                          //       'https://vwaw898.cda.pl/f3MgUWrkp36IlCwd6mxgMw/1660173241/lqdbd3840b39d708eb3b23f9dd3cc42a6a.mp4',
-                          //   title: value.name,
+                          //     AutoFullscreenOrientationPage(
+                          //   url: videoLink,
                           // ),
                           ),
                     );
