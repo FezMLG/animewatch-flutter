@@ -151,14 +151,14 @@ class SeriesScreen extends StatelessWidget {
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20),
-                              child: SizedBox(
-                                width: 400,
-                                child:
-                                    YoutubePlayer(videoId: series.trailer!.id),
-                              ),
-                            )
+                            // Padding(
+                            //   padding: const EdgeInsets.only(top: 20),
+                            //   child: SizedBox(
+                            //     width: 400,
+                            //     child:
+                            //         YoutubePlayer(videoId: series.trailer!.id),
+                            //   ),
+                            // )
                           ],
                         ),
                       ),
