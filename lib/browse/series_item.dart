@@ -12,10 +12,12 @@ class SeriesItem extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  SeriesScreen(seriesId: seriesCard.id),
+          Navigator.pushNamed(
+            context,
+            '/series',
+            arguments: SeriesArguments(
+              id: seriesCard.id,
+              title: seriesCard.title.romaji,
             ),
           );
         },

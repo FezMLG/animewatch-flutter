@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BrowseScreen extends StatelessWidget {
-  BrowseScreen({super.key});
+  String season;
+  int year;
+
+  BrowseScreen({super.key, this.season = 'Winter', this.year = 2022});
 
   DateTime? selectedDate = DateTime.now();
 
@@ -66,7 +69,8 @@ class BrowseScreen extends StatelessWidget {
                     FontAwesomeIcons.circleUser,
                     color: Colors.pink[200],
                   ),
-                  onPressed: () => Navigator.pushNamed(context, '/'),
+                  onPressed: () =>
+                      Navigator.pushReplacementNamed(context, '/browse'),
                 )
               ],
             ),

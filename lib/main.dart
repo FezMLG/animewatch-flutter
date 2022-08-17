@@ -1,5 +1,9 @@
+import 'package:animewatch/browse/browse.dart';
 import 'package:animewatch/firebase_options.dart';
+import 'package:animewatch/home/home.dart';
+import 'package:animewatch/login/login.dart';
 import 'package:animewatch/routes.dart';
+import 'package:animewatch/series/series.dart';
 import 'package:animewatch/shared/loading.dart';
 import 'package:animewatch/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,7 +61,12 @@ class _AppState extends State<App> {
               },
               child: MaterialApp(
                   debugShowCheckedModeBanner: true,
-                  routes: appRoutes,
+                  routes: {
+                    '/': (context) => const HomeScreen(),
+                    '/login': (context) => const LoginScreen(),
+                    '/browse': (context) => BrowseScreen(),
+                    '/series': (context) => const SeriesScreen(),
+                  },
                   theme: appTheme),
             ),
           );
